@@ -223,9 +223,3 @@ Sutradhar includes forensic-grade report generation for courtroom readiness:
   - Complete list of investigator relationship notes & evidence
   - Cryptographic **SHA-256 seal** ensuring case state immutability at export time.
 
----
-
-## ⚖️ Disclaimer & Compliance
-
-- **Synthetic & Research Data**: Default bundled datasets and intelligence reports are synthetic, realistic simulations created for forensic research and evaluation.
-- **Investigative Assistance**: Network centrality scores and correlation metrics represent analytical hypotheses to guide human investigators and do not replace legal due process.
