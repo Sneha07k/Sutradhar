@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "case_name": "Operation Chakravyuh - NCR Inter-State Logistics & Hawala Syndicate",
+    "generated_at": "2026-09-26T12:25:30.576740Z",
+    "provenance": "SYNTHETIC_GROUND_TRUTH_EVALUATION_ONLY"
+  },
+  "resolved_entities": [
+    {
+      "canonical_name": "Rahul Kumar",
+      "entity_type": "PERSON",
+      "aliases_in_sources": [
+        "Rahul Kumar",
+        "R. Kumar",
+        "Rahul K.",
+        "rahul_47",
+        "RK",
+        "Rahul Bhaiya",
+        "Rahul"
+      ],
+      "evidence_identifiers": {
+        "primary_phone": "+91-98110-23451",
+        "primary_vehicle": "UP14 AB 1234",
+        "organization": "Apex Global Logistics Pvt Ltd",
+        "location_overlap": [
+          "Sector 18 Market Noida",
+          "NH8 Mahipalpur Warehouse",
+          "Okhla Industrial Area Phase II"
+        ]
+      },
+      "role_ground_truth": "KEY_OPERATIONAL_BRIDGE"
+    },
+    {
+      "canonical_name": "Vikram Malhotra",
+      "entity_type": "PERSON",
+      "aliases_in_sources": [
+        "Vikram Malhotra",
+        "V. Malhotra",
+        "Malhotra_V",
+        "Vikram M."
+      ],
+      "evidence_identifiers": {
+        "primary_phone": "+91-98201-99881",
+        "primary_vehicle": "DL01 CA 8899",
+        "organization": "Apex Global Logistics Pvt Ltd"
+      },
+      "role_ground_truth": "GROUP_A_CENTRAL_LEAD"
+    },
+    {
+      "canonical_name": "Tariq Sheikh",
+      "entity_type": "PERSON",
+      "aliases_in_sources": [
+        "Tariq Sheikh",
+        "T. Sheikh",
+        "Tariq Bhai",
+        "tariq_sk",
+        "Sheikh Sahab"
+      ],
+      "evidence_identifiers": {
+        "primary_phone": "+91-97115-44332",
+        "primary_vehicle": "MH02 CD 5678",
+        "organization": "Zenith Import-Export Trading"
+      },
+      "role_ground_truth": "GROUP_B_CENTRAL_LEAD"
+    },
+    {
+      "canonical_name": "Amit Sharma",
+      "entity_type": "PERSON",
+      "aliases_in_sources": [
+        "Amit Sharma",
+        "A. Sharma",
+        "Sharma_A",
+        "Panditji"
+      ],
+      "evidence_identifiers": {
+        "primary_phone": "+91-99580-11223",
+        "primary_vehicle": "HR26 BC 4321",
+        "organization": "Zenith Import-Export Trading"
+      },
+      "role_ground_truth": "GROUP_B_FINANCIAL_LEAD"
+    },
+    {
+      "canonical_name": "Sunita Rao",
+      "entity_type": "PERSON",
+      "aliases_in_sources": [
+        "Sunita Rao",
+        "S. Rao",
+        "Rao_Madam"
+      ],
+      "evidence_identifiers": {
+        "primary_phone": "+91-98712-33445",
+        "primary_vehicle": "DL03 EF 1122",
+        "organization": "Kuber Financial Services"
+      },
+      "role_ground_truth": "FINANCIAL_CONDUIT"
+    },
+    {
+      "canonical_name": "Deepak Verma",
+      "entity_type": "PERSON",
+      "aliases_in_sources": [
+        "Deepak Verma",
+        "D. Verma",
+        "Deepu",
+        "Vermaji"
+      ],
+      "evidence_identifiers": {
+        "primary_phone": "+91-98101-77889",
+        "primary_vehicle": "DL04 LM 7788",
+        "organization": "Metro Freight Carriers"
+      },
+      "role_ground_truth": "GROUP_A_WAREHOUSE_MANAGER"
+    },
+    {
+      "canonical_name": "Suresh Patel",
+      "entity_type": "PERSON",
+      "aliases_in_sources": [
+        "Suresh Patel",
+        "S. Patel",
+        "Patel_Bhai",
+        "Sureshji"
+      ],
+      "evidence_identifiers": {
+        "primary_phone": "+91-98220-44556",
+        "primary_vehicle": "GJ01 JK 3456",
+        "organization": "WestCoast Shipping Agency"
+      },
+      "role_ground_truth": "PORT_CLEARANCE_LEAD"
+    }
+  ],
+  "network_ground_truth": {
+    "hidden_bridge_connector": {
+      "entity_id": "PER_001",
+      "name": "Rahul Kumar",
+      "betweenness_role": "HIGH_BETWEENNESS_BRIDGE",
+      "connects_groups": [
+        "GROUP_A_DELHI",
+        "GROUP_B_MUMBAI"
+      ],
+      "direct_bridge_partners": [
+        "PER_002",
+        "PER_003",
+        "PER_004"
+      ]
+    },
+    "groups": {
+      "GROUP_A_DELHI": [
+        "PER_002",
+        "PER_005",
+        "PER_006",
+        "PER_009",
+        "PER_010",
+        "PER_011",
+        "PER_013",
+        "PER_015",
+        "PER_016"
+      ],
+      "GROUP_B_MUMBAI": [
+        "PER_003",
+        "PER_004",
+        "PER_007",
+        "PER_008",
+        "PER_012",
+        "PER_014",
+        "PER_017",
+        "PER_018"
+      ],
+      "BRIDGE": [
+        "PER_001"
+      ]
+    },
+    "suspicious_patterns_ground_truth": [
+      {
+        "pattern_type": "COMMUNICATION_BURST",
+        "entities": [
+          "Rahul Kumar",
+          "Tariq Sheikh"
+        ],
+        "window": "2026-03-12T18:00 to 2026-03-14T22:00",
+        "event_count": 22
+      },
+      {
+        "pattern_type": "TRANSACTION_CHAIN",
+        "entities": [
+          "Apex Global Logistics Pvt Ltd",
+          "Rahul Kumar",
+          "Tariq Sheikh",
+          "Zenith Import-Export Trading"
+        ],
+        "window": "2026-03-12T11:30 to 2026-03-12T17:45",
+        "total_amount": 1600000.0
+      },
+      {
+        "pattern_type": "SHARED_LOCATION_CO_OCCURRENCE",
+        "entities": [
+          "Rahul Kumar",
+          "Tariq Sheikh",
+          "Deepak Verma"
+        ],
+        "location": "Sector 18 Market Noida",
+        "timestamp": "2026-03-14T19:30:00"
+      },
+      {
+        "pattern_type": "SHARED_LOCATION_CO_OCCURRENCE",
+        "entities": [
+          "Vikram Malhotra",
+          "Tariq Sheikh",
+          "Rahul Kumar"
+        ],
+        "location": "NH8 Mahipalpur Warehouse",
+        "timestamp": "2026-03-13T14:10:00"
+      },
+      {
+        "pattern_type": "COMMON_INTERMEDIARY",
+        "intermediary": "Rahul Kumar",
+        "left_hub": "Vikram Malhotra",
+        "right_hub": "Tariq Sheikh"
+      }
+    ]
+  }
+}

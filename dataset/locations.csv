@@ -1,0 +1,13 @@
+location_id,location_name,location_type,address,city,coordinates,provenance
+LOC_001,Sector 18 Market Noida,Commercial Market,"Atta Market, Sector 18, Noida",Noida,"28.5708,77.3261",SYNTHETIC
+LOC_002,NH8 Mahipalpur Warehouse,Logistics Yard,"NH-48 Service Road, Mahipalpur",New Delhi,"28.5412,77.1235",SYNTHETIC
+LOC_003,Connaught Place Block B,Financial Hub,"Inner Circle, Connaught Place",New Delhi,"28.6328,77.2197",SYNTHETIC
+LOC_004,Okhla Industrial Area Phase II,Industrial Facility,"Phase II, Okhla",New Delhi,"28.5355,77.2750",SYNTHETIC
+LOC_005,Bandra Kurla Complex,Corporate Zone,"G Block, BKC, Bandra East",Mumbai,"19.0657,72.8686",SYNTHETIC
+LOC_006,Cyber City Gurugram,Tech Hub,"DLF Cyber City, Phase 2",Gurugram,"28.4952,77.0895",SYNTHETIC
+LOC_007,Mundra Port Terminal 2,Container Terminal,"APSEZ Port Area, Mundra",Kutch,"22.7441,69.7042",SYNTHETIC
+LOC_008,Dhaula Kuan Flyover Underpass,Transit Junction,"Ring Road, Dhaula Kuan",New Delhi,"28.5921,77.1610",SYNTHETIC
+LOC_009,Sector 62 Transport Nagar,Truck Depot,Sector 62,Noida,"28.6210,77.3648",SYNTHETIC
+LOC_0010,Crawford Market Area,Wholesale Market,"Dhobi Talao, Chhatrapati Shivaji Terminus Area",Mumbai,"18.9482,72.8344",SYNTHETIC
+LOC_011,Vasant Kunj Promenade,Commercial Mall,"Nelson Mandela Road, Vasant Kunj",New Delhi,"28.5414,77.1556",SYNTHETIC
+LOC_012,Paharganj Hotel Corridor,Transit Guesthouse,"Arakashan Road, Paharganj",New Delhi,"28.6448,77.2144",SYNTHETIC

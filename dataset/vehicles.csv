@@ -1,0 +1,15 @@
+vehicle_id,registration_no,make_model,color,registered_owner,vehicle_type,provenance
+VEH_001,UP14 AB 1234,Mahindra Scorpio,White,Rahul Kumar,SUV,SYNTHETIC
+VEH_002,DL01 CA 8899,Toyota Fortuner,Black,Vikram Malhotra,SUV,SYNTHETIC
+VEH_003,MH02 CD 5678,Hyundai Creta,Silver,Tariq Sheikh,SUV,SYNTHETIC
+VEH_004,HR26 BC 4321,Honda City,White,Amit Sharma,Sedan,SYNTHETIC
+VEH_005,DL03 EF 1122,Audi A4,Blue,Sunita Rao,Sedan,SYNTHETIC
+VEH_006,UP16 XY 9876,Tata 407 Truck,Yellow,Metro Freight Carriers,Heavy Commercial,SYNTHETIC
+VEH_007,GJ01 JK 3456,BharatBenz 1617,Brown,WestCoast Shipping,Heavy Commercial,SYNTHETIC
+VEH_008,DL08 PQ 6543,Maruti Swift Dzire,White,Cityline Auto Rentals,Taxi,SYNTHETIC
+VEH_009,DL04 LM 7788,Hyundai Verna,Black,Deepak Verma,Sedan,SYNTHETIC
+VEH_010,MH04 GH 2345,Toyota Innova Crysta,Grey,Imran Khan,MUV,SYNTHETIC
+VEH_011,UP14 KK 9012,Mahindra Bolero Pickup,White,Rajesh Yadav,Pickup Truck,SYNTHETIC
+VEH_012,DL10 RS 4455,Royal Enfield Classic 350,Black,Rohit Mehra,Motorcycle,SYNTHETIC
+VEH_013,HR51 ZA 1199,Kia Seltos,Red,Neha Kapur,SUV,SYNTHETIC
+VEH_014,MH01 BK 9900,Mercedes C200,White,Zaid Merchant,Luxury Sedan,SYNTHETIC

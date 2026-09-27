@@ -342,3 +342,190 @@ def export_printable_dossier(case_id: str):
 </body>
 </html>"""
     return HTMLResponse(content=html_content)
+
+
+@router.get("/{case_id}/summary")
+def get_case_summary(case_id: str):
+    """
+    Returns a personalized plain-English summary of everything observed in a case.
+    Written in layman terms so anyone can understand the findings.
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # Fetch case
+    cursor.execute("SELECT * FROM cases WHERE case_id=?", (case_id,))
+    case_row = cursor.fetchone()
+    if not case_row:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Case not found")
+    case = dict(case_row)
+
+    # Total events ingested
+    cursor.execute(
+        "SELECT count(*) FROM normalized_events WHERE case_id=?", (case_id,)
+    )
+    total_events = cursor.fetchone()[0]
+
+    # Personas (unique actors found)
+    cursor.execute(
+        "SELECT canonical_handle, platform FROM personas WHERE case_id=?", (case_id,)
+    )
+    personas = [dict(r) for r in cursor.fetchall()]
+    forum_actors = [p for p in personas if "forum" in p["platform"].lower()]
+    market_actors = [p for p in personas if "market" in p["platform"].lower()]
+
+    # Evidence / correlations
+    cursor.execute(
+        """SELECT e.*, pa.canonical_handle as handle_a, pb.canonical_handle as handle_b
+           FROM evidence e
+           LEFT JOIN personas pa ON e.source_persona_id = pa.persona_id
+           LEFT JOIN personas pb ON e.target_persona_id = pb.persona_id
+           WHERE e.case_id=? AND e.challenge_status='ACTIVE'
+           ORDER BY e.confidence_weight DESC""",
+        (case_id,)
+    )
+    evidence_rows = [dict(r) for r in cursor.fetchall()]
+
+    # Best match
+    best_match = evidence_rows[0] if evidence_rows else None
+
+    # PGP / BTC / Onion identifiers
+    cursor.execute(
+        """SELECT i.identifier_type, count(*) as cnt
+           FROM identifiers i
+           JOIN personas p ON i.persona_id = p.persona_id
+           WHERE p.case_id=?
+           GROUP BY i.identifier_type""",
+        (case_id,)
+    )
+    identifiers_summary = {r["identifier_type"]: r["cnt"] for r in cursor.fetchall()}
+
+    # Investigator notes
+    cursor.execute(
+        "SELECT count(*) FROM investigator_notes WHERE case_id=?", (case_id,)
+    )
+    note_count = cursor.fetchone()[0]
+
+    conn.close()
+
+    # ── Build the plain-English narrative ──────────────────────────────────────
+
+    case_name = case.get("name", "this investigation")
+    created_date = (case.get("created_at") or "")[:10]
+
+    # Opening
+    paragraphs = []
+    paragraphs.append(
+        f"📋 **Investigation: {case_name}**\n"
+        f"Case opened on {created_date or 'an unknown date'}. "
+        f"Here is a plain-English breakdown of everything the system has found so far."
+    )
+
+    # Actors found
+    if not personas:
+        paragraphs.append(
+            "🔍 **No actors found yet.** No data has been ingested into this case. "
+            "Go to the Ingest tab and load a dataset slice to get started."
+        )
+    else:
+        actor_text = f"🔍 **Who was found:** The system discovered **{len(personas)} unique actor(s)** across the datasets. "
+        if forum_actors:
+            handles = ", ".join(f"*{p['canonical_handle']}*" for p in forum_actors[:3])
+            extra = f" and {len(forum_actors)-3} more" if len(forum_actors) > 3 else ""
+            actor_text += f"On the forum side, {len(forum_actors)} user(s) were identified — including {handles}{extra}. "
+        if market_actors:
+            mhandles = ", ".join(f"*{p['canonical_handle']}*" for p in market_actors[:3])
+            mextra = f" and {len(market_actors)-3} more" if len(market_actors) > 3 else ""
+            actor_text += f"On the marketplace side, {len(market_actors)} vendor(s) appeared — including {mhandles}{mextra}. "
+        paragraphs.append(actor_text)
+
+    # Data ingested
+    if total_events > 0:
+        paragraphs.append(
+            f"📊 **What was analysed:** A total of **{total_events} data records** (posts, vendor profiles, "
+            f"marketplace listings) were loaded and analysed by the system."
+        )
+
+    # Attribution / correlation findings
+    if not evidence_rows:
+        paragraphs.append(
+            "🔗 **Attribution results:** No identity links have been computed yet. "
+            "Try running a correlation analysis from the Ingest tab."
+        )
+    else:
+        supporting = [e for e in evidence_rows if e.get("polarity") == "SUPPORTING"]
+        conflicting = [e for e in evidence_rows if e.get("polarity") == "CONFLICTING"]
+        paragraphs.append(
+            f"🔗 **Identity matching:** The system found **{len(evidence_rows)} pieces of evidence** "
+            f"linking actors across platforms — **{len(supporting)} supporting** a shared identity "
+            f"and **{len(conflicting)} conflicting** (suggesting they might be different people). "
+        )
+        if best_match and best_match.get("handle_a") and best_match.get("handle_b"):
+            wt = best_match.get("confidence_weight", 0)
+            etype = (best_match.get("evidence_type") or "Unknown").replace("_", " ").title()
+            paragraphs.append(
+                f"🎯 **Strongest lead:** The highest-confidence link is between "
+                f"**{best_match['handle_a']}** and **{best_match['handle_b']}**, "
+                f"supported by *{etype}* evidence (confidence weight: {round(float(wt), 1)}). "
+                f"In plain terms, these two users likely share the same real-world identity."
+            )
+
+    # Identifiers (PGP, BTC, Onion)
+    if identifiers_summary:
+        id_parts = []
+        if identifiers_summary.get("PGP_KEY"):
+            id_parts.append(f"{identifiers_summary['PGP_KEY']} PGP encryption key(s)")
+        if identifiers_summary.get("BTC_ADDRESS"):
+            id_parts.append(f"{identifiers_summary['BTC_ADDRESS']} Bitcoin address(es)")
+        if identifiers_summary.get("ONION_URL"):
+            id_parts.append(f"{identifiers_summary['ONION_URL']} .onion website link(s)")
+        if id_parts:
+            paragraphs.append(
+                f"🔑 **Cryptographic clues:** The system extracted " + ", ".join(id_parts) +
+                " from posts and listings. These are strong digital fingerprints — "
+                "sharing a PGP key or Bitcoin address across platforms is a very strong indicator of the same person."
+            )
+
+    # Coordination
+    try:
+        coord = detect_coordination_network(case_id, max_pairs=5)
+        clusters = coord.get("coordination_clusters", [])
+        if clusters:
+            paragraphs.append(
+                f"🤝 **Coordinated behaviour:** The system detected **{len(clusters)} group(s)** "
+                f"of actors who seem to be working together — posting in response to each other "
+                f"very quickly or always appearing in the same threads at the same time. "
+                f"This could indicate organised activity or multiple fake accounts controlled by one person."
+            )
+    except Exception:
+        pass
+
+    # Notes
+    if note_count > 0:
+        paragraphs.append(
+            f"📝 **Investigator notes:** {note_count} manual note(s) have been recorded by the analyst during this investigation."
+        )
+
+    # Closing
+    status = case.get("status", "OPEN")
+    paragraphs.append(
+        f"📌 **Case status:** This investigation is currently marked as **{status}**. "
+        f"Use the Export tab to download a full forensic dossier with a cryptographic integrity seal."
+    )
+
+    return {
+        "case_id": case_id,
+        "case_name": case_name,
+        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "summary_paragraphs": paragraphs,
+        "stats": {
+            "total_events": total_events,
+            "total_actors": len(personas),
+            "forum_actors": len(forum_actors),
+            "market_actors": len(market_actors),
+            "evidence_items": len(evidence_rows),
+            "identifiers_found": sum(identifiers_summary.values()),
+            "investigator_notes": note_count,
+        },
+    }

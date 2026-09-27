@@ -1,0 +1,61 @@
+event_id,platform,handle,interaction_type,target_handle,timestamp,content,provenance
+SOC_001,Telegram Intercept,rahul_47,DIRECT_MESSAGE,tariq_sk,2026-03-12T22:14:00,Consignment dispatched from Okhla hub. Scorpio UP14 AB 1234 will reach Sector 18 tomorrow evening. Keep your receiver ready.,SYNTHETIC
+SOC_002,Telegram Intercept,tariq_sk,DIRECT_MESSAGE,rahul_47,2026-03-12T22:18:00,Bhai clearance confirmed at Mundra terminal. Transfer of 16L initiated via RTGS through Amit. Confirm once credited in ICICI.,SYNTHETIC
+SOC_003,Signal Intercept,RK_Apex,GROUP_CHAT,Ops_North_Internal,2026-03-13T10:45:00,All transport bills for March 14 are cleared by Director Vikram Malhotra. Deepak ensure truck UP16 XY 9876 is stationed at Mahipalpur warehouse.,SYNTHETIC
+SOC_004,WhatsApp Intercept,+91-99580-11223 (Amit Sharma),DIRECT_MESSAGE,+91-98712-33445 (Sunita Rao),2026-03-09T11:15:00,Madam Kuber invoice 2026/03 has been adjusted against logistics consult fee. Please disburse token advance to Rahul K.,SYNTHETIC
+SOC_005,Wire Intercept,imran_express,MESSAGE,rahul_47,2026-03-07T15:25:00,Operational check #5: Delivery schedule synchronized for container lot 105. Route via NH-48 cleared.,SYNTHETIC
+SOC_006,Wire Intercept,rahul_47,MESSAGE,tariq_sk,2026-03-08T16:42:00,Operational check #6: Delivery schedule synchronized for container lot 106. Route via NH-48 cleared.,SYNTHETIC
+SOC_007,Signal,tariq_sk,MESSAGE,malhotra_v,2026-03-09T17:59:00,Operational check #7: Delivery schedule synchronized for container lot 107. Route via NH-48 cleared.,SYNTHETIC
+SOC_008,Wire Intercept,malhotra_v,MESSAGE,sharma_a,2026-03-10T18:16:00,Operational check #8: Delivery schedule synchronized for container lot 108. Route via NH-48 cleared.,SYNTHETIC
+SOC_009,Telegram,sharma_a,MESSAGE,deepu_trans,2026-03-11T19:33:00,Operational check #9: Delivery schedule synchronized for container lot 109. Route via NH-48 cleared.,SYNTHETIC
+SOC_010,Signal,deepu_trans,MESSAGE,imran_express,2026-03-12T20:50:00,Operational check #10: Delivery schedule synchronized for container lot 110. Route via NH-48 cleared.,SYNTHETIC
+SOC_011,Wire Intercept,imran_express,MESSAGE,rahul_47,2026-03-13T10:07:00,Operational check #11: Delivery schedule synchronized for container lot 111. Route via NH-48 cleared.,SYNTHETIC
+SOC_012,Telegram,rahul_47,MESSAGE,tariq_sk,2026-03-02T11:24:00,Operational check #12: Delivery schedule synchronized for container lot 112. Route via NH-48 cleared.,SYNTHETIC
+SOC_013,Wire Intercept,tariq_sk,MESSAGE,malhotra_v,2026-03-03T12:41:00,Operational check #13: Delivery schedule synchronized for container lot 113. Route via NH-48 cleared.,SYNTHETIC
+SOC_014,WhatsApp Business,malhotra_v,MESSAGE,sharma_a,2026-03-04T13:58:00,Operational check #14: Delivery schedule synchronized for container lot 114. Route via NH-48 cleared.,SYNTHETIC
+SOC_015,Wire Intercept,sharma_a,MESSAGE,deepu_trans,2026-03-05T14:15:00,Operational check #15: Delivery schedule synchronized for container lot 115. Route via NH-48 cleared.,SYNTHETIC
+SOC_016,WhatsApp Business,deepu_trans,MESSAGE,imran_express,2026-03-06T15:32:00,Operational check #16: Delivery schedule synchronized for container lot 116. Route via NH-48 cleared.,SYNTHETIC
+SOC_017,Wire Intercept,imran_express,MESSAGE,rahul_47,2026-03-07T16:49:00,Operational check #17: Delivery schedule synchronized for container lot 117. Route via NH-48 cleared.,SYNTHETIC
+SOC_018,Wire Intercept,rahul_47,MESSAGE,tariq_sk,2026-03-08T17:06:00,Operational check #18: Delivery schedule synchronized for container lot 118. Route via NH-48 cleared.,SYNTHETIC
+SOC_019,Signal,tariq_sk,MESSAGE,malhotra_v,2026-03-09T18:23:00,Operational check #19: Delivery schedule synchronized for container lot 119. Route via NH-48 cleared.,SYNTHETIC
+SOC_020,Signal,malhotra_v,MESSAGE,sharma_a,2026-03-10T19:40:00,Operational check #20: Delivery schedule synchronized for container lot 120. Route via NH-48 cleared.,SYNTHETIC
+SOC_021,WhatsApp Business,sharma_a,MESSAGE,deepu_trans,2026-03-11T20:57:00,Operational check #21: Delivery schedule synchronized for container lot 121. Route via NH-48 cleared.,SYNTHETIC
+SOC_022,Signal,deepu_trans,MESSAGE,imran_express,2026-03-12T10:14:00,Operational check #22: Delivery schedule synchronized for container lot 122. Route via NH-48 cleared.,SYNTHETIC
+SOC_023,Telegram,imran_express,MESSAGE,rahul_47,2026-03-13T11:31:00,Operational check #23: Delivery schedule synchronized for container lot 123. Route via NH-48 cleared.,SYNTHETIC
+SOC_024,Telegram,rahul_47,MESSAGE,tariq_sk,2026-03-02T12:48:00,Operational check #24: Delivery schedule synchronized for container lot 124. Route via NH-48 cleared.,SYNTHETIC
+SOC_025,WhatsApp Business,tariq_sk,MESSAGE,malhotra_v,2026-03-03T13:05:00,Operational check #25: Delivery schedule synchronized for container lot 125. Route via NH-48 cleared.,SYNTHETIC
+SOC_026,Telegram,malhotra_v,MESSAGE,sharma_a,2026-03-04T14:22:00,Operational check #26: Delivery schedule synchronized for container lot 126. Route via NH-48 cleared.,SYNTHETIC
+SOC_027,Telegram,sharma_a,MESSAGE,deepu_trans,2026-03-05T15:39:00,Operational check #27: Delivery schedule synchronized for container lot 127. Route via NH-48 cleared.,SYNTHETIC
+SOC_028,Wire Intercept,deepu_trans,MESSAGE,imran_express,2026-03-06T16:56:00,Operational check #28: Delivery schedule synchronized for container lot 128. Route via NH-48 cleared.,SYNTHETIC
+SOC_029,Signal,imran_express,MESSAGE,rahul_47,2026-03-07T17:13:00,Operational check #29: Delivery schedule synchronized for container lot 129. Route via NH-48 cleared.,SYNTHETIC
+SOC_030,Telegram,rahul_47,MESSAGE,tariq_sk,2026-03-08T18:30:00,Operational check #30: Delivery schedule synchronized for container lot 130. Route via NH-48 cleared.,SYNTHETIC
+SOC_031,Telegram,tariq_sk,MESSAGE,malhotra_v,2026-03-09T19:47:00,Operational check #31: Delivery schedule synchronized for container lot 131. Route via NH-48 cleared.,SYNTHETIC
+SOC_032,Signal,malhotra_v,MESSAGE,sharma_a,2026-03-10T20:04:00,Operational check #32: Delivery schedule synchronized for container lot 132. Route via NH-48 cleared.,SYNTHETIC
+SOC_033,Telegram,sharma_a,MESSAGE,deepu_trans,2026-03-11T10:21:00,Operational check #33: Delivery schedule synchronized for container lot 133. Route via NH-48 cleared.,SYNTHETIC
+SOC_034,Telegram,deepu_trans,MESSAGE,imran_express,2026-03-12T11:38:00,Operational check #34: Delivery schedule synchronized for container lot 134. Route via NH-48 cleared.,SYNTHETIC
+SOC_035,Signal,imran_express,MESSAGE,rahul_47,2026-03-13T12:55:00,Operational check #35: Delivery schedule synchronized for container lot 135. Route via NH-48 cleared.,SYNTHETIC
+SOC_036,Wire Intercept,rahul_47,MESSAGE,tariq_sk,2026-03-02T13:12:00,Operational check #36: Delivery schedule synchronized for container lot 136. Route via NH-48 cleared.,SYNTHETIC
+SOC_037,Telegram,tariq_sk,MESSAGE,malhotra_v,2026-03-03T14:29:00,Operational check #37: Delivery schedule synchronized for container lot 137. Route via NH-48 cleared.,SYNTHETIC
+SOC_038,Signal,malhotra_v,MESSAGE,sharma_a,2026-03-04T15:46:00,Operational check #38: Delivery schedule synchronized for container lot 138. Route via NH-48 cleared.,SYNTHETIC
+SOC_039,Telegram,sharma_a,MESSAGE,deepu_trans,2026-03-05T16:03:00,Operational check #39: Delivery schedule synchronized for container lot 139. Route via NH-48 cleared.,SYNTHETIC
+SOC_040,Telegram,deepu_trans,MESSAGE,imran_express,2026-03-06T17:20:00,Operational check #40: Delivery schedule synchronized for container lot 140. Route via NH-48 cleared.,SYNTHETIC
+SOC_041,Wire Intercept,imran_express,MESSAGE,rahul_47,2026-03-07T18:37:00,Operational check #41: Delivery schedule synchronized for container lot 141. Route via NH-48 cleared.,SYNTHETIC
+SOC_042,WhatsApp Business,rahul_47,MESSAGE,tariq_sk,2026-03-08T19:54:00,Operational check #42: Delivery schedule synchronized for container lot 142. Route via NH-48 cleared.,SYNTHETIC
+SOC_043,WhatsApp Business,tariq_sk,MESSAGE,malhotra_v,2026-03-09T20:11:00,Operational check #43: Delivery schedule synchronized for container lot 143. Route via NH-48 cleared.,SYNTHETIC
+SOC_044,Signal,malhotra_v,MESSAGE,sharma_a,2026-03-10T10:28:00,Operational check #44: Delivery schedule synchronized for container lot 144. Route via NH-48 cleared.,SYNTHETIC
+SOC_045,WhatsApp Business,sharma_a,MESSAGE,deepu_trans,2026-03-11T11:45:00,Operational check #45: Delivery schedule synchronized for container lot 145. Route via NH-48 cleared.,SYNTHETIC
+SOC_046,Signal,deepu_trans,MESSAGE,imran_express,2026-03-12T12:02:00,Operational check #46: Delivery schedule synchronized for container lot 146. Route via NH-48 cleared.,SYNTHETIC
+SOC_047,WhatsApp Business,imran_express,MESSAGE,rahul_47,2026-03-13T13:19:00,Operational check #47: Delivery schedule synchronized for container lot 147. Route via NH-48 cleared.,SYNTHETIC
+SOC_048,Wire Intercept,rahul_47,MESSAGE,tariq_sk,2026-03-02T14:36:00,Operational check #48: Delivery schedule synchronized for container lot 148. Route via NH-48 cleared.,SYNTHETIC
+SOC_049,Signal,tariq_sk,MESSAGE,malhotra_v,2026-03-03T15:53:00,Operational check #49: Delivery schedule synchronized for container lot 149. Route via NH-48 cleared.,SYNTHETIC
+SOC_050,WhatsApp Business,malhotra_v,MESSAGE,sharma_a,2026-03-04T16:10:00,Operational check #50: Delivery schedule synchronized for container lot 150. Route via NH-48 cleared.,SYNTHETIC
+SOC_051,Wire Intercept,sharma_a,MESSAGE,deepu_trans,2026-03-05T17:27:00,Operational check #51: Delivery schedule synchronized for container lot 151. Route via NH-48 cleared.,SYNTHETIC
+SOC_052,WhatsApp Business,deepu_trans,MESSAGE,imran_express,2026-03-06T18:44:00,Operational check #52: Delivery schedule synchronized for container lot 152. Route via NH-48 cleared.,SYNTHETIC
+SOC_053,Telegram,imran_express,MESSAGE,rahul_47,2026-03-07T19:01:00,Operational check #53: Delivery schedule synchronized for container lot 153. Route via NH-48 cleared.,SYNTHETIC
+SOC_054,Telegram,rahul_47,MESSAGE,tariq_sk,2026-03-08T20:18:00,Operational check #54: Delivery schedule synchronized for container lot 154. Route via NH-48 cleared.,SYNTHETIC
+SOC_055,Wire Intercept,tariq_sk,MESSAGE,malhotra_v,2026-03-09T10:35:00,Operational check #55: Delivery schedule synchronized for container lot 155. Route via NH-48 cleared.,SYNTHETIC
+SOC_056,Telegram,malhotra_v,MESSAGE,sharma_a,2026-03-10T11:52:00,Operational check #56: Delivery schedule synchronized for container lot 156. Route via NH-48 cleared.,SYNTHETIC
+SOC_057,Telegram,sharma_a,MESSAGE,deepu_trans,2026-03-11T12:09:00,Operational check #57: Delivery schedule synchronized for container lot 157. Route via NH-48 cleared.,SYNTHETIC
+SOC_058,Signal,deepu_trans,MESSAGE,imran_express,2026-03-12T13:26:00,Operational check #58: Delivery schedule synchronized for container lot 158. Route via NH-48 cleared.,SYNTHETIC
+SOC_059,WhatsApp Business,imran_express,MESSAGE,rahul_47,2026-03-13T14:43:00,Operational check #59: Delivery schedule synchronized for container lot 159. Route via NH-48 cleared.,SYNTHETIC
+SOC_060,Signal,rahul_47,MESSAGE,tariq_sk,2026-03-02T15:00:00,Operational check #60: Delivery schedule synchronized for container lot 160. Route via NH-48 cleared.,SYNTHETIC

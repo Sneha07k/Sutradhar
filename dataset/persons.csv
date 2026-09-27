@@ -1,0 +1,36 @@
+person_id,full_name,aliases,gender,dob_approx,nationality,address,primary_phone,primary_vehicle,primary_org,role_title,group_affiliation,provenance
+PER_001,Rahul Kumar,R. Kumar;Rahul K.;rahul_47;RK;Rahul Bhaiya,Male,1988-06-14,Indian,"Flat 302, Sector 50, Noida, UP",+91-98110-23451,UP14 AB 1234,Apex Global Logistics Pvt Ltd,Logistics Operations Lead,INTERMEDIARY_BRIDGE,SYNTHETIC
+PER_002,Vikram Malhotra,V. Malhotra;Malhotra_V;Vikram M.,Male,1975-11-22,Indian,"Bungalow 18, Greater Kailash Part 1, New Delhi",+91-98201-99881,DL01 CA 8899,Apex Global Logistics Pvt Ltd,Managing Director,GROUP_A_DELHI,SYNTHETIC
+PER_003,Tariq Sheikh,T. Sheikh;Tariq Bhai;tariq_sk;Sheikh Sahab,Male,1978-04-09,Indian,"Apartment 1204, Sea Breeze Towers, Bandra West, Mumbai",+91-97115-44332,MH02 CD 5678,Zenith Import-Export Trading,Managing Partner,GROUP_B_MUMBAI,SYNTHETIC
+PER_004,Amit Sharma,A. Sharma;Sharma_A;Panditji,Male,1983-08-30,Indian,"Villa 45, Sector 56, Gurugram, Haryana",+91-99580-11223,HR26 BC 4321,Zenith Import-Export Trading,Chief Financial Controller,GROUP_B_MUMBAI,SYNTHETIC
+PER_005,Sunita Rao,S. Rao;Rao_Madam,Female,1981-01-15,Indian,"C-12, Nizamuddin East, New Delhi",+91-98712-33445,DL03 EF 1122,Kuber Financial Services,Executive Director,GROUP_A_DELHI,SYNTHETIC
+PER_006,Deepak Verma,D. Verma;Deepu;Vermaji,Male,1986-12-05,Indian,"H-19, Sector 22, Noida, UP",+91-98101-77889,DL04 LM 7788,Metro Freight Carriers,Transport Hub Superintendent,GROUP_A_DELHI,SYNTHETIC
+PER_007,Suresh Patel,S. Patel;Patel_Bhai;Sureshji,Male,1976-07-19,Indian,"Plot 105, GIDC Estate, Gandhidham, Gujarat",+91-98220-44556,GJ01 JK 3456,WestCoast Shipping Agency,Customs Clearing Superintendent,GROUP_B_MUMBAI,SYNTHETIC
+PER_008,Imran Khan,I. Khan;Imran_Courier;Khan_Bhai,Male,1990-03-27,Indian,"Block D, Kurla West, Mumbai",+91-98440-66778,MH04 GH 2345,Zenith Import-Export Trading,Transit Operations Field Agent,GROUP_B_MUMBAI,SYNTHETIC
+PER_009,Rohit Mehra,R. Mehra;Mehra_Security,Male,1992-09-11,Indian,"Sector 45, Gurugram, Haryana",+91-98211-55443,DL10 RS 4455,BlueStar Security Solutions,Security Supervisor,GROUP_A_DELHI,SYNTHETIC
+PER_010,Neha Kapur,N. Kapur;Neha_Accounts,Female,1989-05-18,Indian,"Tower 4, Mayur Vihar Phase 1, Delhi",+91-98733-11229,HR51 ZA 1199,Apex Global Logistics Pvt Ltd,Senior Accountant,GROUP_A_DELHI,SYNTHETIC
+PER_011,Rajesh Yadav,R. Yadav;Rajesh Driver,Male,1984-10-02,Indian,"Village Chhalera, Sector 44, Noida",+91-97177-88990,UP14 KK 9012,Metro Freight Carriers,Heavy Vehicle Fleet Driver,GROUP_A_DELHI,SYNTHETIC
+PER_012,Zaid Merchant,Z. Merchant;Zaid_Cash,Male,1982-02-14,Indian,"Pedder Road, South Mumbai",+91-99200-33441,MH01 BK 9900,Zenith Import-Export Trading,Forex Associate,GROUP_B_MUMBAI,SYNTHETIC
+PER_013,Manoj Tiwari,M. Tiwari;Tiwari_Rentals,Male,1980-08-20,Indian,"Mahipalpur Village, New Delhi",+91-98990-11228,DL08 PQ 6543,Cityline Auto Rentals,Fleet Dispatcher,GROUP_A_DELHI,SYNTHETIC
+PER_014,Farooq Ahmed,F. Ahmed;Farooq Cargo,Male,1987-11-09,Indian,"Dongri, Mumbai",+91-98233-66554,MH04 GH 2345,Zenith Import-Export Trading,Dock Freight Agent,GROUP_B_MUMBAI,SYNTHETIC
+PER_015,Ajay Bhati,A. Bhati;Ajay Gujjar,Male,1994-06-25,Indian,"Dadri Road, Greater Noida",+91-98102-33449,UP16 XY 9876,Apex Global Logistics Pvt Ltd,Yard Supervisor,GROUP_A_DELHI,SYNTHETIC
+PER_016,Sanjay Singh,S. Singh;Sanjay Transport,Male,1985-04-12,Indian,"Sector 12, Faridabad, Haryana",+91-99711-44552,HR26 BC 4321,Metro Freight Carriers,Dispatch Officer,GROUP_A_DELHI,SYNTHETIC
+PER_017,Wasim Akram,W. Akram;Wasim Bhai,Male,1989-01-30,Indian,"Nagpada, Mumbai",+91-98330-77665,MH02 CD 5678,Zenith Import-Export Trading,Field Runner,GROUP_B_MUMBAI,SYNTHETIC
+PER_018,Bilal Qureshi,B. Qureshi;Bilal_Q,Male,1991-07-04,Indian,"Bhiwandi Warehouse Zone, Thane",+91-99882-11334,MH04 GH 2345,Zenith Import-Export Trading,Storage Coordinator,GROUP_B_MUMBAI,SYNTHETIC
+PER_019,Kavita Sen,K. Sen,Female,1993-03-12,Indian,"Lajpat Nagar, New Delhi",+91-98111-00201,DL02 AB 1100,Kuber Financial Services,Client Relations,PERIPHERAL,SYNTHETIC
+PER_020,Anil Saxena,A. Saxena,Male,1972-09-08,Indian,"Sector 15, Noida",+91-98111-00202,UP16 CC 2211,Cityline Auto Rentals,Fleet Auditor,PERIPHERAL,SYNTHETIC
+PER_021,Pooja Hegde,P. Hegde,Female,1995-12-14,Indian,"Andheri East, Mumbai",+91-98200-00301,MH03 DD 4433,Zenith Import-Export Trading,Documentation Clerk,PERIPHERAL,SYNTHETIC
+PER_022,Ramesh Chawla,R. Chawla,Male,1968-05-20,Indian,"Karol Bagh, New Delhi",+91-98111-00203,DL05 EE 5544,Apex Global Logistics Pvt Ltd,Legal Advisor,PERIPHERAL,SYNTHETIC
+PER_023,Gaurav Joshi,G. Joshi,Male,1988-10-10,Indian,"Sector 29, Gurugram",+91-99580-00401,HR26 FF 6655,BlueStar Security Solutions,Security Guard,PERIPHERAL,SYNTHETIC
+PER_024,Harish Rawat,H. Rawat,Male,1981-04-16,Indian,"Ghaziabad, UP",+91-98111-00204,UP14 GG 7766,Metro Freight Carriers,Mechanic,PERIPHERAL,SYNTHETIC
+PER_025,Meera Nair,M. Nair,Female,1990-07-28,Indian,"Kandivali, Mumbai",+91-98200-00302,MH02 HH 8877,Zenith Import-Export Trading,Customer Support,PERIPHERAL,SYNTHETIC
+PER_026,Pawan Kalyan,P. Kalyan,Male,1984-11-03,Indian,"Alipur, Delhi",+91-98111-00205,DL11 JJ 9988,Apex Global Logistics Pvt Ltd,Forklift Operator,PERIPHERAL,SYNTHETIC
+PER_027,Javed Ansari,J. Ansari,Male,1987-02-19,Indian,"Govandi, Mumbai",+91-98200-00303,MH04 KK 1122,WestCoast Shipping Agency,Crane Operator,PERIPHERAL,SYNTHETIC
+PER_028,Vikas Chauhan,V. Chauhan,Male,1992-08-15,Indian,"Sector 71, Noida",+91-98111-00206,UP16 LL 3344,Metro Freight Carriers,Billing Clerk,PERIPHERAL,SYNTHETIC
+PER_029,Nitin Goel,N. Goel,Male,1985-06-01,Indian,"Pitampura, Delhi",+91-98111-00207,DL08 MM 5566,Kuber Financial Services,Tax Consultant,PERIPHERAL,SYNTHETIC
+PER_030,Ashok Singhania,A. Singhania,Male,1970-03-31,Indian,"Civil Lines, Delhi",+91-98111-00208,DL01 NN 7788,Apex Global Logistics Pvt Ltd,Board Member,PERIPHERAL,SYNTHETIC
+PER_031,Chetan Bhagat,C. Bhagat,Male,1986-09-22,Indian,"Bandra, Mumbai",+91-98200-00304,MH02 PP 9900,Zenith Import-Export Trading,Logistics Planner,PERIPHERAL,SYNTHETIC
+PER_032,Simran Kaur,S. Kaur,Female,1994-01-11,Indian,"Tilak Nagar, Delhi",+91-98111-00209,DL04 QQ 1234,Cityline Auto Rentals,Receptionist,PERIPHERAL,SYNTHETIC
+PER_033,Dharmendra Yadav,D. Yadav,Male,1983-12-18,Indian,"Surajpur, Greater Noida",+91-98111-00210,UP16 RR 5678,Metro Freight Carriers,Truck Loader,PERIPHERAL,SYNTHETIC
+PER_034,Kishore Kumar,K. Kumar,Male,1979-05-04,Indian,"Mulund, Mumbai",+91-98200-00305,MH03 SS 9012,WestCoast Shipping Agency,Surveyor,PERIPHERAL,SYNTHETIC
+PER_035,Arjun Rampal,A. Rampal,Male,1988-07-07,Indian,"DLF Phase 1, Gurugram",+91-99580-00402,HR26 TT 3456,BlueStar Security Solutions,Field Inspector,PERIPHERAL,SYNTHETIC
