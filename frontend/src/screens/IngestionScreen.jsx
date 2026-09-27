@@ -174,16 +174,16 @@ export default function IngestionScreen({ caseData, user, onDone, onBack }) {
     }}>
       <header style={{
         display: 'flex', alignItems: 'center', padding: '0 24px',
-        height: 68, background: 'var(--bg-card)', borderBottom: '1px solid var(--border)', gap: 12,
+        height: 62, background: 'var(--bg-card)', borderBottom: '1px solid var(--border)', gap: 12,
       }}>
         <button className="btn btn-ghost btn-sm" onClick={onBack}>{t.back || 'Back'}</button>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, flex: 1 }}>
           <img
             src="/logo.png"
-            alt="Sutradhar Logo"
-            style={{ height: 50, width: 'auto', objectFit: 'contain' }}
+            alt="Pragya Chakshu Logo"
+            style={{ height: 42, width: 'auto', objectFit: 'contain' }}
           />
-          <div style={{ width: 1, height: 26, background: 'var(--border)' }} />
+          <div style={{ width: 1, height: 24, background: 'var(--border)' }} />
           <div style={{ fontWeight: 600, fontSize: 15 }}>{caseData.name}</div>
         </div>
         <span style={{ fontSize: 12, color: 'var(--text-tertiary)' }}>Multi-Source Intelligence Ingestion</span>

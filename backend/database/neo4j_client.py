@@ -3,6 +3,9 @@ import json
 import logging
 import re
 import tempfile
+import threading
+import time
+from contextlib import contextmanager
 from neo4j import GraphDatabase, exceptions
 import networkx as nx
 from backend.config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, BASE_DIR
@@ -13,6 +16,12 @@ GRAPH_FALLBACK_PATH = str(BASE_DIR / "backend" / "data" / "graph_fallback.json")
 _driver = None
 _nx_graph = None
 _use_fallback = False
+
+_save_lock = threading.Lock()
+_batch_depth = 0
+_last_save_time = 0.0
+_pending_save_timer = None
+_SAVE_THROTTLE_SECONDS = 0.25
 
 # Post/Listing node ids are derived from dataset-local record ids (post:133), so
 # they used to collide across every case that ingested the same slice, which
@@ -116,27 +125,63 @@ def _scope_cached_artifact_nodes(nx_graph):
 
 
 def _write_graph_atomic(data):
-    """Persist the fallback graph so readers never observe a half-written file.
+    """Persist the fallback graph with Windows-resilient atomic write and retry backoff.
 
-    Writing straight to GRAPH_FALLBACK_PATH truncates it first, so a concurrent
-    reader (or a crash mid-dump) sees invalid JSON. Dumping to a sibling temp
-    file and renaming is atomic on POSIX, so the path only ever holds a
-    complete document.
+    On Windows, background processes (like OneDrive sync, Windows Search, or Antivirus)
+    frequently place transient read locks on files. An unhandled os.replace will fail
+    with [WinError 5] Access is denied if the destination is currently locked by a reader.
+    This implementation:
+      1. Writes JSON to a temporary file in the system temp directory (outside OneDrive).
+      2. Attempts atomic os.replace with exponential backoff retries.
+      3. If os.replace still encounters Windows file locks, falls back to direct overwrite.
+      4. Always guarantees temporary file cleanup.
     """
-    directory = os.path.dirname(GRAPH_FALLBACK_PATH) or "."
-    os.makedirs(directory, exist_ok=True)
-    fd, tmp_path = tempfile.mkstemp(dir=directory, prefix=".graph_fallback-", suffix=".tmp")
+    fd, tmp_path = tempfile.mkstemp(prefix="graph_fallback_", suffix=".tmp")
     try:
-        with os.fdopen(fd, "w") as f:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
             json.dump(data, f)
             f.flush()
             os.fsync(f.fileno())
-        os.replace(tmp_path, GRAPH_FALLBACK_PATH)
+
+        os.makedirs(os.path.dirname(GRAPH_FALLBACK_PATH) or ".", exist_ok=True)
+
+        # Attempt atomic replace with exponential backoff on Windows file locking
+        max_attempts = 8
+        replaced = False
+        for attempt in range(max_attempts):
+            try:
+                os.replace(tmp_path, GRAPH_FALLBACK_PATH)
+                replaced = True
+                break
+            except (PermissionError, OSError) as e:
+                # WinError 5 = Access is denied, WinError 32 = Sharing violation
+                is_win_lock = getattr(e, "winerror", None) in (5, 32) or isinstance(e, PermissionError)
+                if is_win_lock and attempt < max_attempts - 1:
+                    backoff = 0.05 * (1.8 ** attempt)  # 50ms, 90ms, 162ms, 290ms...
+                    time.sleep(backoff)
+                    continue
+                break
+
+        if not replaced:
+            # Fallback for OneDrive / Windows filesystem locking:
+            # Direct file overwrite succeeds when MoveFileEx DELETE privilege is restricted
+            with open(GRAPH_FALLBACK_PATH, "w", encoding="utf-8") as f:
+                json.dump(data, f)
+                f.flush()
+                try:
+                    os.fsync(f.fileno())
+                except OSError:
+                    pass
+
     except Exception:
-        # Never leave a stray temp file behind on failure.
-        if os.path.exists(tmp_path):
-            os.unlink(tmp_path)
         raise
+    finally:
+        # Guarantee temp file cleanup with retry
+        if os.path.exists(tmp_path):
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
 
 
 def init_neo4j():
@@ -155,7 +200,7 @@ def init_neo4j():
         _use_fallback = True
         if os.path.exists(GRAPH_FALLBACK_PATH):
             try:
-                with open(GRAPH_FALLBACK_PATH, "r") as f:
+                with open(GRAPH_FALLBACK_PATH, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 _nx_graph = nx.node_link_graph(data)
                 if _scope_cached_artifact_nodes(_nx_graph):
@@ -176,12 +221,78 @@ def init_neo4j():
             _nx_graph = nx.DiGraph()
 
 
-def _save_fallback_graph():
+def _flush_fallback_graph_locked():
+    """Write current in-memory graph to disk under _save_lock."""
+    global _last_save_time
     if _use_fallback and _nx_graph is not None:
         try:
             _write_graph_atomic(nx.node_link_data(_nx_graph))
+            _last_save_time = time.monotonic()
         except Exception as e:
             logger.error(f"Failed to persist fallback graph: {e}")
+
+
+def _save_fallback_graph(force: bool = False):
+    """Save in-memory NetworkX graph to disk.
+
+    If inside a batch_fallback_updates context, skips disk write until the batch exits.
+    If called rapidly outside a batch, debounces to prevent overwhelming OneDrive / disk I/O.
+    """
+    global _last_save_time, _pending_save_timer
+    if not _use_fallback or _nx_graph is None:
+        return
+
+    with _save_lock:
+        if _batch_depth > 0 and not force:
+            # Inside a batch update; suppress intermediate disk writes
+            return
+
+        now = time.monotonic()
+        elapsed = now - _last_save_time
+
+        if force or elapsed >= _SAVE_THROTTLE_SECONDS:
+            if _pending_save_timer is not None:
+                _pending_save_timer.cancel()
+                _pending_save_timer = None
+            _flush_fallback_graph_locked()
+        else:
+            # Debounce: schedule a save after remaining throttle time
+            if _pending_save_timer is None:
+                delay = max(0.05, _SAVE_THROTTLE_SECONDS - elapsed)
+
+                def _delayed_flush():
+                    global _pending_save_timer
+                    with _save_lock:
+                        _pending_save_timer = None
+                        _flush_fallback_graph_locked()
+
+                _pending_save_timer = threading.Timer(delay, _delayed_flush)
+                _pending_save_timer.daemon = True
+                _pending_save_timer.start()
+
+
+@contextmanager
+def batch_fallback_updates():
+    """Context manager for batch graph mutations.
+
+    Suppresses intermediate disk writes during bulk node/edge additions
+    and commits a single atomic write upon exit.
+    """
+    global _batch_depth
+    with _save_lock:
+        _batch_depth += 1
+    try:
+        yield
+    finally:
+        with _save_lock:
+            _batch_depth = max(0, _batch_depth - 1)
+            if _batch_depth == 0:
+                _flush_fallback_graph_locked()
+
+
+def flush_fallback_graph():
+    """Explicitly force flush in-memory fallback graph to disk."""
+    _save_fallback_graph(force=True)
 
 
 def _ensure_init():

@@ -17,6 +17,7 @@ from backend.database.neo4j_client import (
     merge_post_node,
     merge_identifier_node,
     merge_listing_node,
+    batch_fallback_updates,
 )
 
 
@@ -397,24 +398,25 @@ def ingest_market_listings(case_id, limit=20):
 
 
 def ingest_initial_events(case_id, limit=20, source="forum"):
-    if source == "vendors":
-        return ingest_market_vendors(case_id, limit=limit)
-    elif source == "listings":
-        return ingest_market_listings(case_id, limit=limit)
-    elif source == "all":
-        r1 = ingest_forum_posts(case_id, limit=limit)
-        r2 = ingest_market_vendors(case_id, limit=limit)
-        r3 = ingest_market_listings(case_id, limit=limit)
-        return {
-            "ingested_count": r1["ingested_count"]
-            + r2["ingested_count"]
-            + r3["ingested_count"],
-            "breakdown": {
-                "forum_posts": r1["ingested_count"],
-                "vendors": r2["ingested_count"],
-                "listings": r3["ingested_count"],
-            },
-            "status": "success",
-        }
-    else:
-        return ingest_forum_posts(case_id, limit=limit)
+    with batch_fallback_updates():
+        if source == "vendors":
+            return ingest_market_vendors(case_id, limit=limit)
+        elif source == "listings":
+            return ingest_market_listings(case_id, limit=limit)
+        elif source == "all":
+            r1 = ingest_forum_posts(case_id, limit=limit)
+            r2 = ingest_market_vendors(case_id, limit=limit)
+            r3 = ingest_market_listings(case_id, limit=limit)
+            return {
+                "ingested_count": r1["ingested_count"]
+                + r2["ingested_count"]
+                + r3["ingested_count"],
+                "breakdown": {
+                    "forum_posts": r1["ingested_count"],
+                    "vendors": r2["ingested_count"],
+                    "listings": r3["ingested_count"],
+                },
+                "status": "success",
+            }
+        else:
+            return ingest_forum_posts(case_id, limit=limit)

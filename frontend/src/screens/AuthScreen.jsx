@@ -81,9 +81,9 @@ export default function AuthScreen({ onAuth }) {
       >
         <img
           src="/logo.png"
-          alt="Sutradhar Logo"
+          alt="Pragya Chakshu Logo"
           fetchpriority="high"
-          style={{ height: 130, width: 'auto', objectFit: 'contain', marginBottom: 8, filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.12))' }}
+          style={{ height: 120, width: 'auto', objectFit: 'contain', marginBottom: 8, filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.12))' }}
         />
         <div style={{ fontSize: 13, color: 'var(--text-tertiary)', marginTop: 2, letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>
           {t.tagline}

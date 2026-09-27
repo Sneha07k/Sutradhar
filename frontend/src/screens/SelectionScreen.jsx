@@ -87,7 +87,7 @@ export default function SelectionScreen({ user, onSelect, onSignOut }) {
         display: 'flex',
         alignItems: 'center',
         padding: '0 24px',
-        height: 68,
+        height: 62,
         background: 'var(--bg-card)',
         borderBottom: '1px solid var(--border)',
         gap: 12,
@@ -95,9 +95,9 @@ export default function SelectionScreen({ user, onSelect, onSignOut }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, flex: 1 }}>
           <img
             src="/logo.png"
-            alt="Sutradhar Logo"
+            alt="Pragya Chakshu Logo"
             fetchpriority="high"
-            style={{ height: 52, width: 'auto', objectFit: 'contain' }}
+            style={{ height: 44, width: 'auto', objectFit: 'contain' }}
           />
         </div>
         <LangToggle />
