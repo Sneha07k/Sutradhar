@@ -366,16 +366,16 @@ export default function DashboardScreen({ caseData, user, onBack, onSignOut, onR
       {/* Header */}
       <header style={{
         display: 'flex', alignItems: 'center', padding: '0 24px',
-        height: 62, background: 'var(--bg-card)', borderBottom: '1px solid var(--border)', gap: 12, flexShrink: 0,
+        height: 68, background: 'var(--bg-card)', borderBottom: '1px solid var(--border)', gap: 12, flexShrink: 0,
       }}>
         <button className="btn btn-ghost btn-sm" onClick={onBack}>← Cases</button>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, flex: 1 }}>
           <img
             src="/logo.png"
-            alt="Pragya Chakshu Logo"
-            style={{ height: 42, width: 'auto', objectFit: 'contain' }}
+            alt="Sutradhar Logo"
+            style={{ height: 50, width: 'auto', objectFit: 'contain' }}
           />
-          <div style={{ width: 1, height: 24, background: 'var(--border)' }} />
+          <div style={{ width: 1, height: 26, background: 'var(--border)' }} />
           <div style={{ fontWeight: 700, fontSize: 15 }}>{caseData.name}</div>
         </div>
         <span className="badge badge-success" style={{ fontSize: 10 }}>{t.open}</span>
