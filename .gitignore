@@ -34,9 +34,7 @@ backend/data/
 # Logs
 *.log
 
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
+# Temporary and scratch files
+scratch/
+Sutradhar/
 
